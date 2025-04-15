@@ -10,7 +10,7 @@ export default function Splash() {
   return (
     <View style={styles.splashContainer}>
       <LottieView
-        source={require("../assets/trashpoint-splash-2.json")}
+        source={require("../assets/trashpoint-splash.json")}
         autoPlay
         loop
         resizeMode="cover"
