@@ -24,6 +24,14 @@
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/ChelseaMarket-Regular.ttf"]
+        }
+      ]
+    ]
   }
 }
