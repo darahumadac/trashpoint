@@ -24,6 +24,7 @@ https://reactnative.dev/docs/set-up-your-environment
 #1e2805
 #0f1402
 #000000
+#8DC71E;
 
 ## Tint
 #9acc1d

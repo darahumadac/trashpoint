@@ -2,11 +2,17 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import LottieView from "lottie-react-native";
 import { useFonts } from "expo-font";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Splash() {
   const [loaded] = useFonts({
     ChelseaMarket: require("../assets/fonts/ChelseaMarket-Regular.ttf"),
   });
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<{ Home: undefined }, "Home">>();
+
   return (
     <View style={styles.splashContainer}>
       <LottieView
@@ -15,6 +21,7 @@ export default function Splash() {
         loop={false}
         resizeMode="cover"
         style={styles.logoContainer}
+        onAnimationFinish={() => navigation.navigate("Home")}
       />
       <View style={styles.appNameContainer}>
         {loaded && (
@@ -46,10 +53,10 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   appNameGreen: {
-    color: "#9acc1d" 
+    color: "#9acc1d",
   },
-  appNameOrange:{
-    color: "#FFA500"
+  appNameOrange: {
+    color: "#FFA500",
   },
   logoContainer: { position: "relative", height: "50%", top: "-10%" },
   splashContainer: {

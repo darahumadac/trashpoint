@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.primary-bg{
+    background-color: #a4d133;
+}
+
+.secondary-bg{
+    background-color: #D6EAA4;
+}
+
+.dark-text{
+    color: #0d3500;
+}
+
+.muted-text{
+    color: #3f3f3f;
+}
+
+.outfitRegular {
+    font-family: 'Outfit';
+}
+
+.outfitBold{
+    font-family: 'OutfitBold';
+}
+
+.section-header{
+    font-size: 12;
+    text-transform: uppercase;
+    margin-bottom: 15;
+}
