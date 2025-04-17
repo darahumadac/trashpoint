@@ -1,16 +1,36 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import { useFonts } from "expo-font";
-import { Link, useNavigation } from "@react-navigation/native";
+import React, { useCallback } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Alert,
+  BackHandler,
+} from "react-native";
+import { Link, useFocusEffect, useNavigation } from "@react-navigation/native";
 import QuickLink from "./components/QuickLink";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Home() {
-  const [loaded] = useFonts({
-    Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
-    OutfitBold: require("../assets/fonts/Outfit-Bold.ttf"),
-  });
+  const confirmExit = useCallback(() => {
+    Alert.alert(
+      "Exit app",
+      "Are you sure you want to exit?",
+      [
+        { text: "Cancel", onPress: () => {}, style: "cancel" },
+        { text: "Yes", onPress: () => BackHandler.exitApp() },
+      ],
+      { cancelable: false }
+    );
+    return true;
+  }, []);
 
+  useFocusEffect(() => {
+    const backHander = BackHandler.addEventListener("hardwareBackPress", confirmExit);
+    return () => backHander.remove(); 
+  })
+  
   const navigation =
     useNavigation<
       NativeStackNavigationProp<{ Profile: undefined }, "Profile">
@@ -45,7 +65,7 @@ export default function Home() {
           className="h-auto w-4/5 max-w-[90%] rounded-lg my-5 p-5 flex flex-row flex-wrap justify-around items-center"
         >
           <Image
-            source={require("../assets/coins-money-svgrepo-com.png")}
+            source={require("../assets/icons/coins-money-svgrepo-com.png")}
             style={{ marginBottom: 10, height: 80, width: 80 }}
           />
 
@@ -79,6 +99,7 @@ export default function Home() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   shadow: {
     boxShadow: "3px 5px 10px 1px #a9a9a9",

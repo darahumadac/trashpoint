@@ -8,21 +8,29 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 export default function Splash() {
   const [loaded] = useFonts({
     ChelseaMarket: require("../assets/fonts/ChelseaMarket-Regular.ttf"),
+    Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
+    OutfitBold: require("../assets/fonts/Outfit-Bold.ttf"),
   });
 
   const navigation =
     useNavigation<NativeStackNavigationProp<{ Home: undefined }, "Home">>();
 
+
+  useEffect(() => {
+   if(!loaded) return;
+   setTimeout(() => navigation.navigate("Home"), 2000);
+  },[loaded])
+
   return (
     <View style={styles.splashContainer}>
       <LottieView
-        source={require("../assets/trashpoint-splash.json")}
+        source={require("../assets/animations/trashpoint_loading.json")}
         autoPlay
-        loop={false}
-        resizeMode="cover"
+        loop
+        resizeMode="center"
         style={styles.logoContainer}
-        onAnimationFinish={() => navigation.navigate("Home")}
       />
+
       <View style={styles.appNameContainer}>
         {loaded && (
           <Text style={styles.appName}>
@@ -36,33 +44,33 @@ export default function Splash() {
 }
 
 const styles = StyleSheet.create({
-  appNameContainer: {
-    position: "absolute",
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    height: 220,
-    width: "100%",
-  },
-  appName: {
-    fontSize: 55,
-    textShadowRadius: 2,
-    textShadowColor: "#788777",
-    textShadowOffset: { width: 2, height: 3 },
-    fontFamily: "ChelseaMarket",
-    letterSpacing: 4,
-  },
-  appNameGreen: {
-    color: "#9acc1d",
-  },
-  appNameOrange: {
-    color: "#FFA500",
-  },
-  logoContainer: { position: "relative", height: "50%", top: "-10%" },
   splashContainer: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#e0efbb",
+    backgroundColor: "#EAF4D1",
+  },
+  logoContainer: {
+    height: "30%",
+    marginVertical: -35,
+  },
+  appNameContainer: {
+    alignSelf: "center",
+    alignItems: "center",
+    height: 220,
+  },
+  appName: {
+    fontSize: 50,
+    // textShadowRadius: 1,
+    // textShadowColor: "#0f1402",
+    // textShadowOffset: { width: 1, height: 1 },
+    fontFamily: "OutfitBold",
+    letterSpacing: 2,
+  },
+  appNameGreen: {
+    color: "#86B314",
+  },
+  appNameOrange: {
+    color: "#E29300",
   },
 });
