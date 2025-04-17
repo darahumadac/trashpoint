@@ -8,11 +8,11 @@ import {
   Alert,
   BackHandler,
 } from "react-native";
-import { Link, useFocusEffect, useNavigation } from "@react-navigation/native";
-import QuickLink from "./components/QuickLink";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Link, useFocusEffect } from "@react-navigation/native";
+import QuickLink, { QuickLinkGroup } from "./components/QuickLink";
+import AppView from "./components/AppView";
 
-export default function Home() {
+export default function Home({ navigation }: any) {
   const confirmExit = useCallback(() => {
     Alert.alert(
       "Exit app",
@@ -27,17 +27,15 @@ export default function Home() {
   }, []);
 
   useFocusEffect(() => {
-    const backHander = BackHandler.addEventListener("hardwareBackPress", confirmExit);
-    return () => backHander.remove(); 
-  })
-  
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<{ Profile: undefined }, "Profile">
-    >();
+    const backHander = BackHandler.addEventListener(
+      "hardwareBackPress",
+      confirmExit
+    );
+    return () => backHander.remove();
+  });
 
   return (
-    <View className="flex-1">
+    <AppView>
       {/* <View className="bg-black" /> */}
       <View className="pt-5 h-1/6 secondary-bg items-center justify-center relative">
         <View className="w-4/5 flex flex-row justify-start items-center">
@@ -85,18 +83,13 @@ export default function Home() {
           </View>
         </View>
         {/* quick links for user action */}
-        <View className="h-auto w-4/5 flex flex-col">
-          <Text className="section-header outfitRegular muted-text flex-start">
-            Quick Links
-          </Text>
-          <View className="flex flex-row justify-between max-w-full flex-wrap">
-            <QuickLink text="Scan QR" icon="expand" />
-            <QuickLink text="Book Slot" icon="calendar" />
-            <QuickLink text="Your QR" icon="qrcode" />
-          </View>
-        </View>
+        <QuickLinkGroup title="Quick Links" navigation={navigation}>
+          <QuickLink text="Scan QR" icon="expand" screen="ScanQR" />
+          <QuickLink text="Book Slot" icon="calendar" screen="ReserveSlot" />
+          <QuickLink text="Your QR" icon="qrcode" screen="ShowQR" />
+        </QuickLinkGroup>
       </View>
-    </View>
+    </AppView>
   );
 }
 

@@ -5,21 +5,17 @@ import { useFonts } from "expo-font";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function Splash() {
+export default function Splash({ navigation }: any) {
   const [loaded] = useFonts({
     ChelseaMarket: require("../assets/fonts/ChelseaMarket-Regular.ttf"),
     Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
     OutfitBold: require("../assets/fonts/Outfit-Bold.ttf"),
   });
 
-  const navigation =
-    useNavigation<NativeStackNavigationProp<{ Home: undefined }, "Home">>();
-
-
   useEffect(() => {
-   if(!loaded) return;
-   setTimeout(() => navigation.navigate("Home"), 2000);
-  },[loaded])
+    if (!loaded) return;
+    setTimeout(() => navigation.navigate("Home"), 2000);
+  }, [loaded]);
 
   return (
     <View style={styles.splashContainer}>
