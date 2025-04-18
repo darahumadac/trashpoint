@@ -11,6 +11,7 @@ import {
 import { Link, useFocusEffect } from "@react-navigation/native";
 import QuickLink, { QuickLinkGroup } from "./components/QuickLink";
 import AppView from "./components/AppView";
+import FontAwesome from "@expo/vector-icons/FontAwesome6";
 
 export default function Home({ navigation }: any) {
   const confirmExit = useCallback(() => {
@@ -38,8 +39,18 @@ export default function Home({ navigation }: any) {
     <AppView statusBarColor="#D6EAA4">
       {/* <View className="bg-black" /> */}
       {/* Header */}
-      <View className="pt-5 h-1/6 secondary-bg items-center justify-center relative">
-        <View className="w-4/5 flex flex-row justify-start items-center">
+      <View className="py-3 h-auto secondary-bg relative">
+        {/* Notification bell */}
+        <View className="flex-row justify-end mr-5">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Notifications")}
+          >
+            <FontAwesome name="bell" size={20} />
+            {/* badge */}
+            <View style={styles.notificationBadge} />
+          </TouchableOpacity>
+        </View>
+        <View className="mt-[-10] ml-10 w-4/5 flex flex-row justify-start items-center">
           <View className="mr-5">
             <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
               <Image
@@ -50,7 +61,7 @@ export default function Home({ navigation }: any) {
           </View>
           <Text className="tracking-wider outfitRegular dark-text">
             <Text className="text-m">Welcome back,{"\n"}</Text>
-            <Text className="text-2xl outfitBold">Samuel Lim!</Text>
+            <Text className="text-2xl outfitBold black-text">Samuel Lim!</Text>
           </Text>
         </View>
         {/* <View className="h-auto w-4/5 primary-bg p-5 rounded-full absolute -bottom-5">
@@ -98,6 +109,14 @@ const styles = StyleSheet.create({
   shadow: {
     boxShadow: "3px 5px 10px 1px #a9a9a9",
     // #bdb8b8
+  },
+  notificationBadge: {
+    borderRadius: "50%",
+    backgroundColor: "#D21F3C",
+    height: 8,
+    width: 8,
+    position: "absolute",
+    right: -2,
   },
 });
 // const styles = StyleSheet.create({

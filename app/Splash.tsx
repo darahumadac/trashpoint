@@ -4,7 +4,7 @@ import LottieView from "lottie-react-native";
 import { useFonts } from "expo-font";
 import AppName from "./components/AppName";
 
-export default function Splash({ navigation }: any) {
+export default function Splash({navigation}: any) {
   const [loaded] = useFonts({
     ChelseaMarket: require("../assets/fonts/ChelseaMarket-Regular.ttf"),
     Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
@@ -13,7 +13,7 @@ export default function Splash({ navigation }: any) {
 
   useEffect(() => {
     if (!loaded) return;
-    setTimeout(() => navigation.navigate("Login"), 2000);
+    setTimeout(() => navigation.navigate("Home"), 2000);
   }, [loaded]);
 
   return (
