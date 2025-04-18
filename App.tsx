@@ -9,6 +9,8 @@ import Profile from "./app/Profile";
 import ScanQR from "./app/ScanQR";
 import ReserveSlot from "./app/ReserveSlot";
 import ShowQR from "./app/ShowQR";
+import LogIn from "./app/Login";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export default function App() {
         initialRouteName="Splash"
       >
         <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="SignIn" component={LogIn} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="ScanQR" component={ScanQR} />

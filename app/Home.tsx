@@ -35,8 +35,9 @@ export default function Home({ navigation }: any) {
   });
 
   return (
-    <AppView>
+    <AppView statusBarColor="#D6EAA4">
       {/* <View className="bg-black" /> */}
+      {/* Header */}
       <View className="pt-5 h-1/6 secondary-bg items-center justify-center relative">
         <View className="w-4/5 flex flex-row justify-start items-center">
           <View className="mr-5">
