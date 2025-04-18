@@ -12,7 +12,12 @@ https://reactnative.dev/docs/set-up-your-environment
 - https://www.nativewind.dev/getting-started/installation
 - https://www.youtube.com/watch?v=AehQRLkVkiE
 
+### Firebase
+
+- https://firebase.google.com/docs/web/setup#available-libraries
+
 ## Shades
+
 #9acc1d
 #8ab71a
 #7ba317
@@ -27,6 +32,7 @@ https://reactnative.dev/docs/set-up-your-environment
 #8DC71E;
 
 ## Tint
+
 #9acc1d
 #a4d133
 #aed64a
@@ -39,5 +45,18 @@ https://reactnative.dev/docs/set-up-your-environment
 #f4f9e8
 #ffffff
 
+## TODO
 
-
+- Login:
+  - [ ] Login form
+  - [ ] Register user link
+- Register:
+  - [ ] Add user
+- Home:
+  - [ ] Add discover more section to show what can be redeemed with points
+- Scan QR:
+  - [ ] Implement scanning of QR Code
+- Your QR:
+  - [ ] Generate QR Code for account
+- Book Slot
+  - [ ] Schedule dropoff
